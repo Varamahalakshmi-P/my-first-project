@@ -13,20 +13,33 @@
       background: linear-gradient(135deg, #2a2abf, #4b3ad1);
     }
 
-    .hero-section {
-      min-height: 100vh;
-      padding-top: 120px;
+    /* ✅ Desktop navbar fixed spacing */
+    @media (min-width: 992px) {
+      body {
+        padding-top: 90px; /* space for fixed navbar */
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1030;
+      }
     }
 
-    .signup-card {
-      border-radius: 25px;
-    }
-
-    /* 🔥 Mobile navbar shaded background */
+    /* ✅ Tablet & Mobile navbar normal scroll */
     @media (max-width: 991px) {
+      .navbar {
+        position: relative;
+      }
+
+      body {
+        padding-top: 0;
+      }
+
       .navbar-collapse {
-        background: rgba(0, 0, 0, 0.5);   /* dark faded shade */
-        backdrop-filter: blur(8px);       /* smooth glass effect */
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
         padding: 20px;
         border-radius: 15px;
         margin-top: 15px;
@@ -40,13 +53,22 @@
         width: 100%;
       }
     }
+
+    .hero-section {
+      min-height: 100vh;
+    }
+
+    .signup-card {
+      border-radius: 25px;
+    }
+
   </style>
 </head>
 
 <body>
 
 <!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
   <div class="container">
 
     <a class="navbar-brand fw-bold fs-3" href="#">
@@ -100,7 +122,7 @@
 
       <!-- Left Side -->
       <div class="col-lg-6 text-center text-lg-start mb-4">
-        <h1 class="fw-bold display-4 mb-4 ">
+        <h1 class="fw-bold display-4 mb-4">
           Generate Awesome <br> Web Pages
         </h1>
 
@@ -145,11 +167,13 @@
               <button class="btn btn-primary btn-lg rounded-pill">
                 Sign In
               </button>
-            <div class="d-flex align-items-center my-3">
-              <hr class="flex-grow-1">
-                 <span class="px-3 text-muted">or</span>
-               <hr class="flex-grow-1">
-            </div>
+
+              <div class="d-flex align-items-center my-3">
+                <hr class="flex-grow-1">
+                <span class="px-3 text-muted">or</span>
+                <hr class="flex-grow-1">
+              </div>
+
               <button class="btn btn-outline-primary btn-lg rounded-pill">
                 Login via Google
               </button>
