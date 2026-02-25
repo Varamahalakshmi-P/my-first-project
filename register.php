@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_email'] = $email;
         $_SESSION['success'] = "Registration Successful!";
 
-        header("Location: home.php");
+        header("Location: homepage.php");
         exit();
 
     } else {
