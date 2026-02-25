@@ -60,16 +60,29 @@ session_start();
     .signup-card {
       border-radius: 25px;
     }
-
   </style>
 </head>
 
 <body>
 
+<!-- ✅ SUCCESS / ERROR MESSAGES -->
+<div class="container mt-3">
+<?php
+if (isset($_SESSION['success'])) {
+    echo "<div class='alert alert-success text-center'>" . $_SESSION['success'] . "</div>";
+    unset($_SESSION['success']);
+}
+
+if (isset($_SESSION['error'])) {
+    echo "<div class='alert alert-danger text-center'>" . $_SESSION['error'] . "</div>";
+    unset($_SESSION['error']);
+}
+?>
+</div>
+
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
   <div class="container">
-
     <a class="navbar-brand fw-bold fs-3" href="#">
       Chandana Groups
     </a>
@@ -83,29 +96,23 @@ session_start();
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav align-items-lg-center gap-lg-4 text-center mt-3 mt-lg-0">
-
         <li class="nav-item">
           <a class="nav-link text-white" href="#">Overview</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link text-white" href="#">Price</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link text-white" href="#">Blog</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link text-white" href="#">Feedback</a>
         </li>
-
         <li class="nav-item mt-3 mt-lg-0">
           <a class="btn btn-danger rounded-pill px-4" href="#">
             Purchase
           </a>
         </li>
-
       </ul>
     </div>
   </div>
@@ -113,11 +120,10 @@ session_start();
 
 <!-- HERO SECTION -->
 <section class="hero-section d-flex align-items-center text-white">
-
   <div class="container">
     <div class="row align-items-center gy-5">
 
-      <!-- Left -->
+      <!-- LEFT -->
       <div class="col-lg-6 text-center text-lg-start mb-4">
         <h1 class="fw-bold display-4 mb-4">
           Generate Awesome <br> Web Pages
@@ -134,13 +140,12 @@ session_start();
         </a>
       </div>
 
-      <!-- Right -->
+      <!-- RIGHT -->
       <div class="col-lg-6 mb-4">
         <div class="card shadow-lg p-4 p-md-5 signup-card">
 
           <h3 class="text-center mb-4">Sign Up Now</h3>
 
-          <!-- ✅ FORM UPDATED -->
           <form method="POST" action="register.php">
 
             <div class="mb-4">
@@ -167,8 +172,10 @@ session_start();
             </div>
 
             <div class="d-grid gap-3">
-              <button type="submit" class="btn btn-primary btn-lg rounded-pill">
-                Sign In
+              <button type="submit"
+                      name="submit"
+                      class="btn btn-primary btn-lg rounded-pill">
+                Sign Up
               </button>
 
               <div class="d-flex align-items-center my-3">
@@ -177,13 +184,14 @@ session_start();
                 <hr class="flex-grow-1">
               </div>
 
-              <button type="button" class="btn btn-outline-primary btn-lg rounded-pill">
+              <button type="button"
+                      class="btn btn-outline-primary btn-lg rounded-pill">
                 Login via Google
               </button>
             </div>
 
             <p class="text-center mt-4">
-              Do you have an Account?
+              Already have an Account?
               <a href="#" class="text-success">Sign In</a>
             </p>
 
@@ -194,7 +202,6 @@ session_start();
 
     </div>
   </div>
-
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
